@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه پردازش موازی</title>
+    <link rel="stylesheet" href="/web/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container">
+        <!-- هدر -->
+        <header class="text-center my-5">
+            <h1 class="text-primary"><i class="bi bi-cpu"></i> پروژه پردازش موازی</h1>
+            <p class="text-muted" >ارائه انواع پردازش‌های موازی با Thread و Process</p>
+            <p class="text-success">مهتاب ساران</p>
+        </header>
+
+        <!-- فرم اصلی -->
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-sliders"></i> تنظیمات پردازش</h5>
+            </div>
+            <div class="card-body">
+                <form id="scenarioForm">
+                    <div class="row">
+                        <!-- انتخاب روش -->
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">نوع پردازش:</label>
+                            <select class="form-select" id="methodSelect" required>
+                                <option value="">-- انتخاب کنید --</option>
+                                <option value="thread">Thread-Based Parallelism</option>
+                                <option value="process">Process-Based Parallelism</option>
+                            </select>
+                        </div>
+
+                        <!-- انتخاب ابزار -->
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">ابزار همزمانی:</label>
+                            <select class="form-select" id="toolSelect" required disabled>
+                                <option value="">-- ابتدا نوع پردازش را انتخاب کنید --</option>
+                            </select>
+                        </div>
+
+                        <!-- انتخاب سناریو -->
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">شماره سناریو:</label>
+                            <select class="form-select" id="scenarioSelect" required disabled>
+                                <option value="">-- ابتدا ابزار را انتخاب کنید --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-play-circle"></i> اجرای سناریو
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- نتایج -->
+        <div id="results" class="mt-5" style="display: none;">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="bi bi-list-check"></i> نتایج اجرا</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>نوع پردازش:</strong> <span id="resultMethod"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>ابزار همزمانی:</strong> <span id="resultTool"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <strong>شماره سناریو:</strong> <span id="resultScenario"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>زمان اجرا:</strong> <span id="resultTime"></span>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h6 class="text-primary">خروجی:</h6>
+                    <div class="output-container">
+                        <pre id="outputContent" class="bg-light p-3 rounded"></pre>
+                    </div>
+
+                    <hr>
+
+                    <h6 class="text-primary">توضیحات:</h6>
+                    <div id="explanation" class="bg-light p-3 rounded"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- لودینگ -->
+        <div id="loading" class="text-center mt-4" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">در حال اجرا...</span>
+            </div>
+            <p class="mt-2 text-muted">در حال اجرای سناریو، لطفاً منتظر بمانید...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
