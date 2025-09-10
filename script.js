@@ -29,7 +29,7 @@ const resultsDiv = document.getElementById('results');
 const loadingDiv = document.getElementById('loading');
 
 // آدرس API - با توجه به محیط اجرا تغییر دهید
-const API_BASE_URL = 'https://parallel-processing-backend.onrender.com'; // یا آدرس سرور شما
+const API_BASE_URL = 'http://194.60.230.207:8000' // یا آدرس سرور شما
 
 // رویداد تغییر نوع پردازش
 methodSelect.addEventListener('change', function() {
