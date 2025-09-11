@@ -22,11 +22,8 @@ import os
 async def read_root():
     return FileResponse("index.html")
 
-@app.get("/style.css")
 async def read_css():
     return FileResponse("style.css")
-
-@app.get("/script.js")
 async def read_js():
     return FileResponse("script.js")
 
