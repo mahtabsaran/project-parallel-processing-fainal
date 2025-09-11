@@ -15,7 +15,6 @@ services:
     ports:
       - "80:80" # ترافیک ورودی پورت 80 رو به Nginx بدین
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./web:/usr/share/nginx/html
+      - .:/usr/share/nginx/html
     depends_on:
       - web
